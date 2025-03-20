@@ -7,6 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title = isset($_POST['title']) ? trim($_POST['title']) : '';
     $description = isset($_POST['description']) ? trim($_POST['description']) : '';
     $priority = isset($_POST['priority']) ? $_POST['priority'] : 'Sedang';
+    $deadline = isset($_POST['deadline']) ? trim($_POST['deadline']) : null;
     
     // Validasi input
     if (empty($title)) {
@@ -16,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     
     // Tambahkan tugas baru
-    $result = addTask($title, $description, $priority);
+    $result = addTask($title, $description, $priority, $deadline);
     
     if ($result) {
         // Redirect ke halaman utama dengan pesan sukses
